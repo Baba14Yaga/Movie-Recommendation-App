@@ -5,19 +5,22 @@ import sqlite3
 
 def app():
     st.title("Admin Page")
+    
     if st.button("show user table"):
         cnx = sqlite3.connect('model/data.db')
         try:
-            df = pd.read_sql_query("SELECT * FROM userstable", cnx)
-            st.dataframe(df )
+            df1 = pd.read_sql_query("SELECT * FROM userstable", cnx)
+            st.dataframe(df1 )
         except:
             st.write("No Users registered yet")
+        cnx.close()
+        
         
     if st.button("show ratings table"):
         cnx = sqlite3.connect('model/data.db')
-        try:
-            df = pd.read_sql_query("SELECT * FROM ratings", cnx)
-            st.dataframe(df )
-        except:
-            st.write("No movies rated  yet")
+
+        df2 = pd.read_sql_query("SELECT * FROM 'ratings'", cnx)
+        st.dataframe(df2 )
+        st.write("No movies rated  yet")
+        cnx.close()
         

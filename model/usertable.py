@@ -1,9 +1,5 @@
 # DB Management
 import sqlite3
-import hashlib
-def make_hashes(password):
-	return hashlib.sha256(str.encode(password)).hexdigest()
-
 
 def add_userdata(username,password):
     conn = sqlite3.connect('model/data.db')
@@ -41,4 +37,4 @@ def login_user(username,password):
     conn.close()
     return  data[0][0]
 
- 
+

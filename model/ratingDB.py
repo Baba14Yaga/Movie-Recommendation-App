@@ -1,7 +1,7 @@
 import sqlite3  
 
 def insert_rating(user_id,movie_id,rating):
-
+    movie_id=int(movie_id)
     con=sqlite3.connect('model/data.db')
     cur=con.cursor()
     cur.execute('''CREATE TABLE IF NOT EXISTS ratings 
@@ -14,6 +14,7 @@ def insert_rating(user_id,movie_id,rating):
     con.commit()
     con.close()
 def fetch_rating(user_id,movie_id):
+    movie_id=int(movie_id)
     rating=0
     con=sqlite3.connect('model/data.db')
     cursor=con.cursor()
@@ -31,4 +32,16 @@ def fetch_rating(user_id,movie_id):
     return  rating    
     
 
+def show_rating(user_id,movie_id,rating):
 
+    con=sqlite3.connect('model/data.db')
+    cur=con.cursor()
+    cur.execute('''CREATE TABLE IF NOT EXISTS ratings 
+                (user_id INTEGER ,
+                movie_id INTEGER, 
+                rating INTEGER, 
+                Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (user_id, movie_id))''')
+    cur.execute('') 
+    con.commit()
+    con.close()

@@ -60,7 +60,7 @@ def app(user_id):
         def trigger():
             insert_rating(user_id,movie_id,st.session_state.myslider)
         old_rating=fetch_rating(user_id,movie_id)
-        st.slider('Your rating',key='myslider',min_value=1,max_value=10,value=old_rating , 
+        st.slider('Your rating',key='myslider',min_value=1,max_value=10,value= old_rating , 
             on_change= trigger )    
         stars=""
         for i in range(st.session_state.myslider):
